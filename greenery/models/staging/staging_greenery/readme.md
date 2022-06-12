@@ -3,7 +3,7 @@ Question 1: How many users do we have?
     select count(distinct user_id) as users_count
     from dbt.dbt_katelyn_m.stg_greenery__users ;
 
-***Answer: 130 users**
+**Answer: 130 users**
 
 
 Question 2: On average, how many orders do we receive per hour?
