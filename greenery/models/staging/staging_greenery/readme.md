@@ -1,4 +1,5 @@
-Question 1: How many users do we have?
+Question 1:
+How many users do we have?
 
     select count(distinct user_id) as users_count
     from dbt.dbt_katelyn_m.stg_greenery__users ;
@@ -6,7 +7,8 @@ Question 1: How many users do we have?
 **Answer: 130 users**
 
 
-Question 2: On average, how many orders do we receive per hour?
+Question 2:
+On average, how many orders do we receive per hour?
 
     with orders_per_hour as (
         select date_trunc('hour',created_at_utc) as created_at_hour,
@@ -20,7 +22,8 @@ Question 2: On average, how many orders do we receive per hour?
 **Answer: On average, we receive 7.52 orders per hour**
 
 
-Question 3: On average, how long does an order take from being placed to being delivered?
+Question 3:
+On average, how long does an order take from being placed to being delivered?
 
     select sum(delivered_at_utc - created_at_utc)/count(order_id) as average_time_to_delivery
     from dbt.dbt_katelyn_m.stg_greenery__orders
@@ -29,7 +32,8 @@ Question 3: On average, how long does an order take from being placed to being d
 **Answer: On average it takes 3 days, 21 hours 24 minutes and 11.8 seconds from the time an order is place to when it is delivered**
 
 
-Question 4: How many users have only made one purchase? Two purchases? Three+ purchases?
+Question 4:
+How many users have only made one purchase? Two purchases? Three+ purchases?
 
     select user_id,
         count(user_id) as user_count
@@ -52,7 +56,8 @@ Question 4: How many users have only made one purchase? Two purchases? Three+ pu
 **Answer: 25 users have only made one purchase, 28 users have made two purchases, and 71 users have made three+ purchases**
 
 
-Question 5 : On average, how many unique sessions do we have per hour?
+Question 5:
+On average, how many unique sessions do we have per hour?
 
     with sessions_per_hour as (
         select date_trunc('hour',created_at_utc) as created_at_hour,
